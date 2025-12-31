@@ -4,5 +4,9 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  base: "/portfolio/",
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  build: {
+    assetsInlineLimit: 0
+  }
 });

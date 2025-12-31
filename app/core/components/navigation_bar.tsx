@@ -29,7 +29,7 @@ export default function NavigationBar() {
                       menuInputRef.current.checked = false
                     }
                   }}
-                  href={link.href}
+                  href={"/portfolio"+link.href}
                 >
                   <span>{<link.icon />}</span>
                   {link.text}

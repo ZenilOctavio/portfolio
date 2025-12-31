@@ -4,6 +4,33 @@ import TechIcon from "~/core/components/tech_icon";
 import { Download, GithubIcon, LinkedinIcon } from 'lucide-react'
 import FrameCard from "~/core/components/frame_card";
 import Carrousel from "~/core/components/carrousel";
+import resumePDF from "../assets/Resume.pdf"
+import myPhoto from "../assets/img/my_photo_nobg.webp"
+import desktopImg from "../assets/img/desk_photo.jpg"
+import djangoLogo from "../assets/svg/django.svg"
+import bootstrapLogo from "../assets/svg/bootstrap.svg"
+import dockerLogo from "../assets/svg/docker.svg"
+import expressLogo from "../assets/svg/express.svg"
+import goLogo from "../assets/svg/go.svg"
+import javascriptLogo from "../assets/svg/javascript.svg"
+import mysqlLogo from "../assets/svg/mysql.svg"
+import nextjsLogo from "../assets/svg/nextjs.svg"
+import nodejsLogo from "../assets/svg/nodejs.svg"
+import prismaLogo from "../assets/svg/prisma.svg"
+import pythonLogo from "../assets/svg/python.svg"
+import reactLogo from "../assets/svg/react.svg"
+import sequelizeLogo from "../assets/svg/sequelize.svg"
+import tailwindcssLogo from "../assets/svg/tailwindcss.svg"
+import typescriptLogo from "../assets/svg/typescript.svg"
+import viteLogo from "../assets/svg/vite.svg"
+
+import dogosImg1 from "../assets/img/personal_projects/dogos-1.png"
+import dogosImg2 from "../assets/img/personal_projects/dogos-2.png"
+import dogosImg3 from "../assets/img/personal_projects/dogos-3.png"
+
+import luismiImg1 from "../assets/img/personal_projects/luismifix-1.png"
+import luismiImg2 from "../assets/img/personal_projects/luismifix-2.png"
+import luismiImg3 from "../assets/img/personal_projects/luismifix-3.png"
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -36,7 +63,7 @@ export default function Home() {
             <footer className="flex gap-4 mt-4 items-center">
               <a href="mailto:zenil21082003@outlook.com" className="magic-button bg-black/75 px-4 py-2 rounded-sm text-white">Conctact me</a>
               <a
-                href="/Resume.pdf"
+                href={resumePDF}
                 download
                 className="bg-gradient-base bg-clip-text animated-bg-gradient-[5] cursor-pointer hover:scale-105 transition-transform flex gap-2 items-center"
               >
@@ -48,7 +75,7 @@ export default function Home() {
 
           <figure className="md:basis-1/5 self-end max-w-50 md:max-w-none overflow-hidden">
             <picture className="object-cover w-10 fade-image animate-fadein image-shadow">
-              <img src="/img/my_photo_nobg.webp" alt="Octavio Zenil López" />
+              <img src={myPhoto} alt="Octavio Zenil López" />
             </picture>
           </figure>
         </main>
@@ -56,7 +83,7 @@ export default function Home() {
       <section className="relative mt-10 border-b-2 overflow-hidden mx-5 rounded-xl border-b-slate-100/10 bg-black/30">
         <div className="absolute w-full h-full inset-0 -z-10 ">
           <img
-            src="/img/desk_photo.jpg"
+            src={desktopImg}
             alt="desktop image"
             className="object-cover w-full dark:blur-[4px] h-full opacity-40 dark:opacity-60 "
           />
@@ -93,13 +120,13 @@ export default function Home() {
                 <aside className="md:basis-1/20 mt-5 md:mt-0">
                   <ul className="flex md:flex-col flex-row items-center justify-between md:justify-center ">
                     <li className="md:basis-20 basis-10">
-                      <img src="/svg/django.svg" className="object-contain w-full h-full" alt="Django Logo" />
+                      <img src={djangoLogo} className="object-contain w-full h-full" alt="Django Logo" />
                     </li>
                     <li className="md:basis-20 basis-10">
-                      <img src="/svg/bootstrap.svg" className="object-contain w-full h-full" alt="Bootstrap Logo" />
+                      <img src={bootstrapLogo} className="object-contain w-full h-full" alt="Bootstrap Logo" />
                     </li>
                     <li className="md:basis-20 basis-10">
-                      <img src="/svg/python.svg" className="object-contain w-full h-full" alt="Python Logo" />
+                      <img src={pythonLogo} className="object-contain w-full h-full" alt="Python Logo" />
                     </li>
                   </ul>
                 </aside>
@@ -120,13 +147,13 @@ export default function Home() {
                 <aside className="md:basis-1/20 mt-5 md:mt-0">
                   <ul className="flex md:flex-col flex-row items-center justify-between md:justify-center">
                     <li className="md:basis-20 basis-10">
-                      <img src="/svg/nextjs.svg" className="object-contain w-full h-full invert-100 dark:invert-0" alt="NextJS Logo" />
+                      <img src={nextjsLogo} className="object-contain w-full h-full invert-100 dark:invert-0" alt="NextJS Logo" />
                     </li>
                     <li className="md:basis-20 basis-10">
-                      <img src="/svg/tailwindcss.svg" className="object-contain w-full h-full" alt="TailwindCSS Logo" />
+                      <img src={tailwindcssLogo} className="object-contain w-full h-full" alt="TailwindCSS Logo" />
                     </li>
                     <li className="md:basis-20 basis-10">
-                      <img src="/svg/typescript.svg" className="object-contain w-full h-full" alt="Typescript Logo" />
+                      <img src={typescriptLogo} className="object-contain w-full h-full" alt="Typescript Logo" />
                     </li>
                   </ul>
                 </aside>
@@ -197,7 +224,7 @@ export default function Home() {
                     autoScroll
                     scrollSeconds={5}
                     className="dark:opacity-80"
-                    imagesList={["http://localhost:5173/img/personal_projects/dogos-1.png", "http://localhost:5173/img/personal_projects/dogos-2.png", "http://localhost:5173/img/personal_projects/dogos-3.png"]}
+                    imagesList={[dogosImg1, dogosImg2, dogosImg3]}
                   />
                 </figure>
                 <main className="basis-1/2">
@@ -221,7 +248,7 @@ export default function Home() {
                     autoScroll
                     scrollSeconds={5}
                     className="opacity-80"
-                    imagesList={["http://localhost:5173/img/personal_projects/luismifix-1.png", "http://localhost:5173/img/personal_projects/luismifix-2.png", "http://localhost:5173/img/personal_projects/luismifix-3.png"]}
+                    imagesList={[luismiImg1, luismiImg2, luismiImg3]}
                   />
                 </figure>
                 <main className="basis-1/2">
@@ -248,35 +275,35 @@ export default function Home() {
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Javascript"
-                  href="/svg/javascript.svg"
+                  href={javascriptLogo}
                   alt="Javascript logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Typescript"
-                  href="/svg/typescript.svg"
+                  href={typescriptLogo}
                   alt="Typescript logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Python"
-                  href="/svg/python.svg"
+                  href={pythonLogo}
                   alt="Python logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Go"
-                  href="/svg/go.svg"
+                  href={goLogo}
                   alt="Go logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="NodeJS"
-                  href="/svg/nodejs.svg"
+                  href={nodejsLogo}
                   alt="NodeJs logo"
                 />
               </li>
@@ -289,28 +316,28 @@ export default function Home() {
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="React"
-                  href="/svg/react.svg"
+                  href={reactLogo}
                   alt="React logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="TailwindCSS"
-                  href="/svg/tailwindcss.svg"
+                  href={tailwindcssLogo}
                   alt="Tailwind CSS logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Sequelize"
-                  href="/svg/sequelize.svg"
+                  href={sequelizeLogo}
                   alt="Sequelize logo"
                 />
               </li>
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Express"
-                  href="/svg/express.svg"
+                  href={expressLogo}
                   alt="Express logo"
                   className="invert-100 dark:invert-0"
                 />
@@ -318,7 +345,7 @@ export default function Home() {
               <li className="basis-1/5 aspect-square">
                 <TechIcon
                   displayName="Prisma"
-                  href="/svg/prisma.svg"
+                  href={prismaLogo}
                   alt="Prisma logo"
                   className="invert-100 dark:invert-0"
 
@@ -327,7 +354,7 @@ export default function Home() {
               <li className="basis-1/5">
                 <TechIcon
                   displayName="NextJS"
-                  href="/svg/nextjs.svg"
+                  href={nextjsLogo}
                   alt="NextJS logo"
                   className="invert-100 dark:invert-0"
 
@@ -341,7 +368,7 @@ export default function Home() {
               <li className="basis-20 aspect-square">
                 <TechIcon
                   displayName="MySQL"
-                  href="/svg/mysql.svg"
+                  href={mysqlLogo}
                   alt="MySQL logo"
                 />
               </li>
@@ -349,14 +376,14 @@ export default function Home() {
               <li className="basis-20 aspect-square">
                 <TechIcon
                   displayName="Vite"
-                  href="/svg/vite.svg"
+                  href={viteLogo}
                   alt="Vite logo"
                 />
               </li>
               <li className="basis-20 aspect-square">
                 <TechIcon
                   displayName="Docker"
-                  href="/svg/docker.svg"
+                  href={dockerLogo}
                   alt="Docker logo"
                 />
               </li>
