@@ -1,15 +1,355 @@
 @import "tailwindcss";
+@import "./styles/components.css";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-cascadia: "Cascadia Mono", monospace;
+  --scroll-animation-fadein: scroll-fadein;
+  --animate-float: floating 10s ease-in-out infinite;
+  --default-font-family: var(--font-cascadia);
+  --animate-fadein: fade-in 1s ease;
+
+
+
+  --gradient-base: linear-gradient(to right,
+      var(--color-purple-600) 25%,
+      50%,
+      var(--color-purple-400));
+}
+
+:target {
+  scroll-margin: 5rem;
+}
+
+@utility fade-image {
+  mask-image: linear-gradient(black 20%, transparent);
+}
+
+@utility bg-gradient-* {
+  background-image: --value(--gradient- *);
+}
+
+@utility animated-bg-gradient-* {
+  background-size: 180% 180%;
+  animation: gradient-animation calc(--value([integer]) * 1s) ease infinite;
+  color: transparent;
+  text-shadow: none;
+}
+
+@utility scroll-animate-* {
+  animation: --value(--scroll-animation-*) linear forwards;
+  animation-timeline: view();
+}
+
+@utility scroll-start-* {
+  animation-range-start: calc(--value([integer]) * 1px);
+}
+
+@utility scroll-end-* {
+  animation-range-end: calc(--value([integer]) * 1px);
+
+}
+
+
+
+.image-shadow {
+  position: relative;
+}
+
+.image-shadow::before,
+.image-shadow::after {
+  position: absolute;
+  content: "";
+  filter: blur(5px);
+  border-radius: 50%;
+  z-index: -1;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-duration: 20s;
+  animation-direction: alternate-reverse;
+}
+
+.image-shadow::before {
+  background-color: --alpha(var(--color-purple-950) / 20%);
+  width: 20%;
+  height: 20%;
+  animation-name: image-pulse-before;
+}
+
+.image-shadow::after {
+  background-color: --alpha(var(--color-slate-600) / 20%);
+  width: 20%;
+  height: 20%;
+  animation-name: image-pulse-after;
+}
+
+@keyframes image-pulse-after {
+  0% {
+    top: 10%;
+    left: 10%;
+  }
+
+  25% {
+    top: 20%;
+    /* move right and up */
+    left: 40%;
+  }
+
+  50% {
+    top: 40%;
+    /* move right and down */
+    left: 60%;
+  }
+
+  75% {
+    top: 20%;
+    /* move left and down */
+    left: 80%;
+  }
+
+  100% {
+    top: 10%;
+    left: 10%;
+  }
+}
+
+@keyframes image-pulse-before {
+  0% {
+    bottom: 10%;
+    right: 10%;
+  }
+
+  25% {
+    bottom: 80%;
+    /* move right and up */
+    right: 40%;
+  }
+
+  50% {
+    bottom: 70%;
+    /* move right and down */
+    right: 60%;
+  }
+
+  75% {
+    bottom: 20%;
+    /* move left and down */
+    right: 80%;
+  }
+
+  100% {
+    bottom: 10%;
+    right: 10%;
+  }
+}
+
+@utility typing-* {
+  display: block;
+  white-space: nowrap;
+  border-right: 4px solid;
+  overflow: hidden;
+  width: calc(--value([integer]) * 1ch);
+  animation: type-animation 2s steps(--value([integer])),
+    blink 500ms infinite step-end alternate;
+}
+
+.magic-button {
+  cursor: pointer;
+  border: none;
+  position: relative;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: all 500ms ease;
+
+  &:hover {
+    &::before {
+      scale: 1.1;
+    }
+  }
+
+  &::before {
+    transition: all 500ms ease;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    width: 101%;
+    height: 101%;
+    filter: blur(5px);
+
+    background: linear-gradient(45deg,
+        var(--color-purple-600),
+        var(--color-slate-100),
+        var(--color-purple-950),
+        var(--color-purple-600),
+        var(--color-slate-100),
+        var(--color-purple-950),
+        var(--color-purple-600),
+        var(--color-slate-100),
+        var(--color-purple-950));
+
+
+    @media(prefers-color-scheme: dark) {
+      background: linear-gradient(45deg,
+          var(--color-purple-600),
+          var(--color-slate-900),
+          var(--color-purple-950),
+          var(--color-purple-600),
+          var(--color-slate-900),
+          var(--color-purple-950),
+          var(--color-purple-600),
+          var(--color-slate-900),
+          var(--color-purple-950));
+    }
+
+    background-size: 800%;
+    border-radius: 8px;
+    animation: glowing 30s linear infinite;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll-fadein {
+  from {
+    opacity: 0;
+    scale: 0%;
+  }
+
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+@keyframes type-animation {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes blinker {
+  0% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: white;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.blinking {
+  margin-bottom: -2px;
+  display: inline-block;
+  width: 1ch;
+  height: 1em;
+  background-color: white;
+  animation: blinker 1s infinite step-end;
+}
+
+.glass {
+  overflow: hidden;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+.image-shine {
+  position: relative;
+  background-size: 100%;
+
+  &::after {
+    inset: 0;
+    background: inherit;
+    content: "";
+    position: absolute;
+    filter: blur(5px) saturate(1.5);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    scale: 1;
+    animation: pulsing 3s ease-in-out infinite;
+  }
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
 
+  /* background: linear-gradient(to right, */
+  /*     --alpha(var(--color-slate-950) / 20%), */
+  /*     --alpha(var(--color-purple-950) / 10%)); */
+  /* background-size: 180%; */
+  /* animation: gradient-animation 18s ease infinite; */
+  /**/
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+  }
+
+  scroll-behavior: smooth;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.02;
+  }
+
+  100% {
+    scale: 1;
   }
 }

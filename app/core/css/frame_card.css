@@ -1,0 +1,24 @@
+.frame {
+  position: relative;
+
+  &::before,
+  &::after {
+    background-image: var(--gradient-base);
+    background-size: 400%;
+    animation: gradient-animation 7s ease infinite alternate;
+    position: absolute;
+    content: "";
+    z-index: -1;
+    width: 100px;
+    aspect-ratio: 1;
+  }
+
+  &::before {
+    top: calc(100% - 50px);
+    right: calc(100% - 50px);
+  }
+  &::after {
+    bottom: calc(100% - 50px);
+    left: calc(100% - 50px);
+  }
+}
